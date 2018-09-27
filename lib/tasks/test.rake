@@ -5,11 +5,14 @@ namespace :test do
     users = []
     posts = []
     # comments = []
+    # marks = []
 
     # создаем MAX_SEED пользователей
     print 'Добавляем пользователей'
     MAX_SEED.times do |i|
-      users << User.create(name: "User#{i+1}", email: "user#{i+1}@test.ru")
+      user = User.find_by name: "User#{i+1}"
+      user = User.create(name: "User#{i+1}", email: "user#{i+1}@test.ru") if user == nil
+      users << user unless user == nil
       print '.'
     end
     puts
@@ -20,12 +23,15 @@ namespace :test do
     users.each do |user|
       seed = rand(1..MAX_SEED)
       seed.times do |i|
-        post = Post.new
-        post.user = user
-        post.title =  "title by user:#{user.id}:#{i+1}"
-        post.body = "post body by user:#{user.id}:#{i+1}"
-        post.save
-        posts << post
+        post = Post.find_by user: user, title: "title by user:#{user.id}:#{i+1}"
+        if post == nil
+          post = Post.new
+          post.user = user
+          post.title =  "title by user:#{user.id}:#{i+1}"
+          post.body = "post body by user:#{user.id}:#{i+1}"
+          post.save
+        end
+        posts << post unless post == nil
         print '.'
       end
     end
@@ -43,12 +49,25 @@ namespace :test do
         comment.user = user
         comment.body = "comment body for post:#{post.id}:#{i+1} by user:#{user.id}"
         comment.save
-        # comments << comment
+        # comments << comment unless comment == nil
         print '.'
       end
     end
     puts
     # p comments
+
+    # для каждого поста проставляем случайные оценки от каждого пользователя
+    print 'Добавляем оценки'
+    posts.each do |post|
+      users.each do |user|
+        mark = Mark.find_by post: post, user: user
+        mark = Mark.create(post: post, user: user, mark: rand(Mark::MIN_MARK..Mark::MAX_MARK)) if mark == nil
+        # marks << mark unless mark == nil
+        print '.'
+      end
+    end
+    puts
+    # p marks
 
   end
 
