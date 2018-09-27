@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.string :title, index: { unique: true }
       t.text :body
       t.references :user, foreign_key: true
-      t.boolean :visible​, default: false
+      t.boolean :visible, default: false
 
       t.timestamps
     end
