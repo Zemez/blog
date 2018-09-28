@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_27_121028) do
+ActiveRecord::Schema.define(version: 2018_09_27_191106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.text "body"
-    t.bigint "user_id"
     t.bigint "post_id"
+    t.bigint "user_id"
+    t.text "body"
     t.boolean "visible", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -26,11 +26,22 @@ ActiveRecord::Schema.define(version: 2018_09_27_121028) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "marks", force: :cascade do |t|
+    t.bigint "post_id"
+    t.bigint "user_id"
+    t.integer "mark"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id", "user_id"], name: "index_marks_on_post_id_and_user_id", unique: true
+    t.index ["post_id"], name: "index_marks_on_post_id"
+    t.index ["user_id"], name: "index_marks_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "title"
     t.text "body"
-    t.bigint "user_id"
-    t.boolean "visible​", default: false
+    t.boolean "visible", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "index_posts_on_title", unique: true
@@ -51,5 +62,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_121028) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "marks", "posts"
+  add_foreign_key "marks", "users"
   add_foreign_key "posts", "users"
 end
