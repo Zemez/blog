@@ -10,9 +10,12 @@ namespace :test do
     # создаем MAX_SEED пользователей
     print 'Добавляем пользователей'
     MAX_SEED.times do |i|
-      user = User.find_by name: "User#{i+1}"
-      user = User.create(name: "User#{i+1}", email: "user#{i+1}@test.ru") if user == nil
-      users << user unless user == nil
+      heap =  SecureRandom.hex(4)
+      user = User.find_by name: "User#{heap}"
+      user = User.create(name: "User#{heap}", email: "user#{heap}@test.ru") if user.nil?
+      # user = User.find_by name: "User#{i+1}"
+      # user = User.create(name: "User#{i+1}", email: "user#{i+1}@test.ru") if user.nil?
+      users << user unless user.nil?
       print '.'
     end
     puts
@@ -23,15 +26,17 @@ namespace :test do
     users.each do |user|
       seed = rand(1..MAX_SEED)
       seed.times do |i|
-        post = Post.find_by user: user, title: "title by user:#{user.id}:#{i+1}"
+        heap =  SecureRandom.hex(4)
+        post = Post.find_by user: user, title: "title by user:#{'%04d'%user.id}:#{heap}"
+        # post = Post.find_by user: user, title: "title by user:#{user.id}:#{i+1}"
         if post == nil
           post = Post.new
           post.user = user
-          post.title =  "title by user:#{user.id}:#{i+1}"
-          post.body = "post body by user:#{user.id}:#{i+1}"
+          post.title =  "title by user:#{'%04d'%user.id}:#{heap}"
+          post.body = "post body by user:#{'%04d'%user.id}:#{heap}"
           post.save
         end
-        posts << post unless post == nil
+        posts << post unless post.nil?
         print '.'
       end
     end
@@ -43,11 +48,12 @@ namespace :test do
     posts.each do |post|
       seed = rand(MAX_SEED..MAX_SEED**2)
       seed.times do |i|
+        heap =  SecureRandom.hex(4)
         user = users[rand(MAX_SEED)]
         comment = Comment.new
         comment.post = post
         comment.user = user
-        comment.body = "comment body for post:#{post.id}:#{i+1} by user:#{user.id}"
+        comment.body = "comment body for post:#{'%04d'%post.id}:user:#{'%04d'%user.id}:#{heap}"
         comment.save
         # comments << comment unless comment == nil
         print '.'
@@ -61,7 +67,7 @@ namespace :test do
     posts.each do |post|
       users.each do |user|
         mark = Mark.find_by post: post, user: user
-        mark = Mark.create(post: post, user: user, mark: rand(Mark::MIN_MARK..Mark::MAX_MARK)) if mark == nil
+        mark = Mark.create(post: post, user: user, mark: rand(Mark::MIN_MARK..Mark::MAX_MARK)) if mark.nil?
         # marks << mark unless mark == nil
         print '.'
       end
