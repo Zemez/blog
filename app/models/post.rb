@@ -7,6 +7,8 @@ class Post < ApplicationRecord
   has_many :marks
   has_many :markers, through: :marks, source: :user
 
+  has_many :seoes, as: :seoable
+
   validates :title, presence: true
   validates :title, uniqueness: true
   validates :title, length: { minimum: 8, maximum: 255 }
