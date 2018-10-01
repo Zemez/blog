@@ -1,7 +1,81 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+MAX_SEEDS = 10
+
+User.destroy_all
+Post.destroy_all
+Comment.destroy_all
+Mark.destroy_all
+
+# Добавляем пользователей
+print 'Добавляем пользователей'
+
+hash_users = MAX_SEEDS.times.map do
+  print '.'
+  {
+    name: FFaker::Internet.user_name[0..15],
+    email: FFaker::Internet.safe_email
+  }
+end
+
+hash_users.first(7).each { |user| user[:creator] = true }
+hash_users.first(2).each { |user| user[:moderator] = true }
+
+users = User.create! hash_users
+
+puts
+
+# users.each { |user| p user }
+
+# Добавляем посты
+print 'Добавляем посты'
+
+creators = User.where(creator: true)
+
+hash_posts = (2*MAX_SEEDS).times.map do
+  print '.'
+  {
+    title: FFaker::Lorem.phrase,
+    body: FFaker::Lorem.paragraph,
+    user: creators.sample
+  }
+end
+
+posts = Post.create! hash_posts
+
+puts
+
+# Добавляем комментарии
+print 'Добавляем комментарии'
+
+hash_comments = (20*MAX_SEEDS).times.map do
+  print '.'
+  commentable =((rand(2) == 1) ? posts : users).sample
+  {
+    body: FFaker::Lorem.sentence,
+    user: users.sample,
+    commentable_id: commentable.id,
+    commentable_type: commentable.class.to_s
+  }
+end
+
+Comment.create! hash_comments
+
+puts
+
+# Добавляем оценки
+print 'Добавляем оценки'
+
+hash_marks = []
+
+(20*MAX_SEEDS).times do
+  print '.'
+  post_user = { post: posts.sample, user: users.sample }
+  hash_marks << post_user unless hash_marks.include?(post_user)
+end
+
+hash_marks.each { |mark| mark[:mark] = rand(Mark::MIN_MARK..Mark::MAX_MARK) }
+
+Mark.create! hash_marks
+
+puts
