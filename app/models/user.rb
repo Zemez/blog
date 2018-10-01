@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :marks
   has_many :marked_posts, through: :marks, source: :post
 
-  has_many :seoes, as: :seoable
+  has_many :seos, as: :seoable
 
   validates :name, presence: true
   validates :name, length: { minimum: 3, maximum: 16 }

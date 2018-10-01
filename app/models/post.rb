@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   has_many :marks
   has_many :markers, through: :marks, source: :user
 
-  has_many :seoes, as: :seoable
+  has_many :seos, as: :seoable
 
   validates :title, presence: true
   validates :title, uniqueness: true
