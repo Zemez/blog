@@ -10,15 +10,19 @@ default: &default
 
 development:
   <<: *default
-  database: blog_development
+  database: blog_dev
   username: blog
 
 test:
   <<: *default
   database: blog_test
 
+staging:
+  <<: *default
+  database: blog_stage
+
 # production:
 #   <<: *default
-#   database: blog_production
+#   database: blog_db
 #   username: blog
 #   password: <%= ENV['BLOG_DATABASE_PASSWORD'] %>
