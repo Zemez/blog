@@ -2,6 +2,20 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 MAX_SEEDS = 10
 
+# Заполнение SEO для каждой сущности: ent
+def fill_seo(ent)
+  ent.map do |e|
+    print '.'
+    {
+      title: FFaker::Lorem.phrase,
+      description: FFaker::Lorem.paragraph,
+      keywords: FFaker::Lorem.words,
+      seoable_id: e.id,
+      seoable_type: e.class.to_s
+    }
+  end
+end
+
 User.destroy_all
 Post.destroy_all
 Comment.destroy_all
@@ -59,7 +73,7 @@ hash_comments = (20*MAX_SEEDS).times.map do
   }
 end
 
-Comment.create! hash_comments
+comments = Comment.create! hash_comments
 
 puts
 
@@ -77,5 +91,14 @@ end
 hash_marks.each { |mark| mark[:mark] = rand(Mark::MIN_MARK..Mark::MAX_MARK) }
 
 Mark.create! hash_marks
+
+puts
+
+# Добавляем записи SEO
+print 'Добавляем записи SEO'
+
+Seo.create! fill_seo(users)
+Seo.create! fill_seo(posts)
+Seo.create! fill_seo(comments)
 
 puts
