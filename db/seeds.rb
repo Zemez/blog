@@ -7,8 +7,8 @@ def fill_seo(ent)
   ent.map do |e|
     print '.'
     {
-      title: FFaker::Lorem.phrase,
-      description: FFaker::Lorem.paragraph,
+      title: FFaker::Lorem.sentence,
+      description: FFaker::Lorem.paragraphs.to_s.gsub(/["\[\]]/,'').gsub('.,', '.'),
       keywords: FFaker::Lorem.words,
       seoable_id: e.id,
       seoable_type: e.class.to_s
@@ -46,11 +46,11 @@ print 'Добавляем посты'
 
 creators = User.where(creator: true)
 
-hash_posts = (2*MAX_SEEDS).times.map do
+hash_posts = (4*MAX_SEEDS).times.map do
   print '.'
   {
-    title: FFaker::Lorem.phrase,
-    body: FFaker::Lorem.paragraph,
+    title: FFaker::Lorem.sentence,
+    body: FFaker::Lorem.paragraphs.to_s.gsub(/["\[\]]/,'').gsub('.,', '.'),
     user: creators.sample
   }
 end
@@ -66,7 +66,7 @@ hash_comments = (20*MAX_SEEDS).times.map do
   print '.'
   commentable =((rand(2) == 1) ? posts : users).sample
   {
-    body: FFaker::Lorem.sentence,
+    body: FFaker::Lorem.paragraph,
     user: users.sample,
     commentable_id: commentable.id,
     commentable_type: commentable.class.to_s
@@ -99,6 +99,6 @@ print 'Добавляем записи SEO'
 
 Seo.create! fill_seo(users)
 Seo.create! fill_seo(posts)
-Seo.create! fill_seo(comments)
+# Seo.create! fill_seo(comments)
 
 puts

@@ -35,16 +35,23 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Slim templates
 gem 'slim-rails'
 
+# Paging
+gem 'kaminari'
+
 # Awesome print
 gem 'awesome_print'
 gem 'irbtools'
 # gem 'table_print'
 
 group :development, :test do
+  # генератор случайных названий/текстов
   gem 'ffaker'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
+  # отладчик
+  gem 'jquery-rails'
+  gem 'xray-rails'
 end
 
 group :development do

@@ -1,2 +1,2 @@
-module Home​Helper
+module HomeHelper
 end

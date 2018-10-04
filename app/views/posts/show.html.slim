@@ -2,20 +2,28 @@ p#notice
   = notice
 p
   strong
-    | Title:
+    | Title: 
   = @post.title
 p
   strong
-    | Body:
+    | Body: 
   = @post.body
 p
   strong
-    | User:
-  = @post.user
+    | User: 
+  = @post.user.name
 p
   strong
-    | Visible:
+    | Visible: 
   = @post.visible
-= link_to 'Edit', edit_post_path(@post)
+p
+  strong
+    | Comments:
+  table
+    - @post.comments.order(:created_at).each do |comment|
+      tr
+        td: b = comment.user.name
+        td = comment.body
+=> link_to 'Edit', edit_post_path(@post)
 |  | 
-= link_to 'Back', posts_path
+=< link_to 'Back', posts_path
