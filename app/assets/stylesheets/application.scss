@@ -13,3 +13,41 @@
  *= require_tree .
  *= require_self
  */
+/*nav > a {*/
+a {
+  padding: 4px 8px;
+  color: darkcyan;
+  text-decoration: none;
+  border: 1px solid #FFF;
+  border-radius: 3px;
+}
+
+a:visited {
+  color: darkcyan;
+  text-decoration: none;
+}
+
+/*nav > a:hover {*/
+a:hover {
+  color: white;
+  background: seagreen;
+  border: 1px solid darkcyan;
+}
+
+h1 {
+  color: seagreen;
+}
+
+h4 {
+  display: inline-block;
+}
+
+p {
+  color: blue;
+}
+
+footer > p {
+  margin: 0;
+  font-size: 0.8em;
+  color: gray;
+}
