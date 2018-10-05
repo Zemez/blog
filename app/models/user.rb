@@ -16,4 +16,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :name, length: { minimum: 3, maximum: 16 }
   validates :name, uniqueness: true
+  def role
+    moderator ? 'Moderator' : ( creator ? 'Creator' : 'User' ) 
+  end
 end

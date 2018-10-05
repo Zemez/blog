@@ -1,23 +1,17 @@
 p#notice
   = notice
-h1
-  | Posts
+h1 Posts
 table
   thead
     tr
-      th
-        | Title
-      th
-        | Body
-      th
-        | User
-      th
-        | Visible
+      th Title
+      th Body
+      th User
+      th Visible
       th[colspan="3"]
   tbody
     = render partial: 'post', collection: @posts
 br
-p
-  = link_to 'New Post', new_post_path
-p
-  = paginate @posts
+
+= link_to 'New Post', new_post_path
+= paginate @posts

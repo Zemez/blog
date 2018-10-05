@@ -15,7 +15,9 @@
  */
 /*nav > a {*/
 a {
+  display: inline-block;
   padding: 4px 8px;
+  /*margin: 4px;*/
   color: darkcyan;
   text-decoration: none;
   border: 1px solid #FFF;
@@ -40,6 +42,7 @@ h1 {
 
 h4 {
   display: inline-block;
+  font-size: 14px;
 }
 
 p {
