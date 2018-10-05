@@ -62,7 +62,7 @@ puts
 # Добавляем комментарии
 print 'Добавляем комментарии'
 
-hash_comments = (25*MAX_SEEDS).times.map do
+hash_comments = (50*MAX_SEEDS).times.map do
   print '.'
   commentable =((rand(2) == 1) ? posts : users).sample
   {

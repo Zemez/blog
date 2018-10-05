@@ -7,7 +7,8 @@ p#notice = notice
 h2 Comments:
 
 table
-  - @post.comments.order(:created_at).each do |comment|
+  / - @post.comments.order(:created_at).page(params[:page]).per(5).each do |comment|
+  - @comments.each do |comment|
     tr
       td
         = link_to comment.user.name, comment.user
@@ -16,3 +17,5 @@ table
 => link_to 'Edit', edit_post_path(@post)
 '| 
 =< link_to 'Back', posts_path
+
+= paginate @comments
