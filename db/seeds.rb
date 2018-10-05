@@ -24,7 +24,7 @@ Mark.destroy_all
 # Добавляем пользователей
 print 'Добавляем пользователей'
 
-hash_users = MAX_SEEDS.times.map do
+hash_users = (2*MAX_SEEDS).times.map do
   print '.'
   {
     name: FFaker::Internet.user_name[0..15],
@@ -32,8 +32,8 @@ hash_users = MAX_SEEDS.times.map do
   }
 end
 
-hash_users.first(7).each { |user| user[:creator] = true }
-hash_users.first(2).each { |user| user[:moderator] = true }
+hash_users.first(10).each { |user| user[:creator] = true }
+hash_users.first(5).each { |user| user[:moderator] = true }
 
 users = User.create! hash_users
 
@@ -46,7 +46,7 @@ print 'Добавляем посты'
 
 creators = User.where(creator: true)
 
-hash_posts = (4*MAX_SEEDS).times.map do
+hash_posts = (3*MAX_SEEDS).times.map do
   print '.'
   {
     title: FFaker::Lorem.sentence,
@@ -62,7 +62,7 @@ puts
 # Добавляем комментарии
 print 'Добавляем комментарии'
 
-hash_comments = (20*MAX_SEEDS).times.map do
+hash_comments = (25*MAX_SEEDS).times.map do
   print '.'
   commentable =((rand(2) == 1) ? posts : users).sample
   {
@@ -82,7 +82,7 @@ print 'Добавляем оценки'
 
 hash_marks = []
 
-(20*MAX_SEEDS).times do
+(50*MAX_SEEDS).times do
   print '.'
   post_user = { post: posts.sample, user: users.sample }
   hash_marks << post_user unless hash_marks.include?(post_user)

@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.includes(:user).page(params[:page]).per(10)
+    @posts = Post.includes(:user).page(params[:page]).per(5)
   end
 
   # GET /posts/1

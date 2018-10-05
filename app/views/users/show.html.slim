@@ -1,23 +1,32 @@
-p#notice = notice
+h2 User Info:
 
-p
-  strong Name:
-  = @user.name
-p
-  strong Email:
-  = @user.email
-p
-  strong Moderator:
-  = @user.moderator
-p
-  strong Creator:
-  = @user.creator
-p
-  strong Banned:
-  = @user.banned
-p
-  strong Role:
-  = @user.role
+table
+  tr
+    td
+      strong Name:
+    td = @user.name
+  tr
+    td
+      strong Email:
+    td  = @user.email
+  tr
+    td
+      strong Moderator:
+    td = @user.moderator
+  tr
+    td
+      strong Creator:
+    td = @user.creator
+  tr
+    td
+      strong Banned:
+    td = @user.banned
+  tr
+    td
+      strong Role:
+    td = @user.role
+
+p#notice = notice
 
 => link_to 'Edit', edit_user_path(@user)
 '|

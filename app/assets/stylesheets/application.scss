@@ -16,7 +16,7 @@
 /*nav > a {*/
 a {
   display: inline-block;
-  padding: 4px 8px;
+  padding: 3px 5px;
   /*margin: 4px;*/
   color: darkcyan;
   text-decoration: none;
@@ -46,11 +46,16 @@ h4 {
 }
 
 p {
-  color: blue;
+  padding: 3px 5px;
+  /*color: blue;*/
 }
 
 footer > p {
   margin: 0;
   font-size: 0.8em;
   color: gray;
+}
+
+th {
+  text-align: left;
 }
