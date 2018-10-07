@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  devise_for :users
+  root to: 'home#index'
   get 'index', to: 'home#index'
   get 'about', to: 'home#about'
   get '/test(/:test)',to: 'home#test'

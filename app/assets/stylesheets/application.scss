@@ -13,41 +13,103 @@
  *= require_tree .
  *= require_self
  */
+
+.top {
+  vertical-align: top;
+}
+
+.top a {
+  /*margin-top: -2px;*/
+}
+
 /*nav > a {*/
-a {
+a,
+.button {
   display: inline-block;
   padding: 2px 4px;
-  /*margin: 4px;*/
   color: darkcyan;
   text-decoration: none;
   border: 1px solid #FFF;
   border-radius: 3px;
 }
 
-a:visited {
+a:visited,
+.button:visited {
   color: darkcyan;
   text-decoration: none;
 }
 
 /*nav > a:hover {*/
-a:hover {
+a:hover,
+.button:hover {
   color: white;
   background: seagreen;
   border: 1px solid darkcyan;
 }
 
 h1 {
-  color: seagreen;
-}
-
-h4 {
-  display: inline-block;
-  font-size: 14px;
+  /*color: seagreen;*/
 }
 
 p {
-  padding: 3px 5px;
+  /*padding: 3px 5px;*/
   /*color: blue;*/
+}
+
+th,
+td {
+  text-align: left;
+  /*vertical-align: top;*/
+  padding: 1px 2px;
+}
+
+th > a:first-child,
+td > a:first-child,
+th > .button:first-child,
+td > .button:first-child {
+  margin-left: -6px;
+}
+
+nav {
+  width: 100%;
+  overflow: hidden;
+  /*clear: both;*/
+}
+
+nav ul {
+  /*display: inline-block;*/
+  /*clear: both;*/
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.nav_menu {
+  float: left;
+  /*clear: both;*/
+}
+
+ul.nav_user {
+  float: right;
+  /* clear: both;*/
+}
+
+li {
+  display: inline-block;
+}
+
+/*nav.pagination > span {
+  display: inline-block;
+}
+
+nav.pagination > span > a {
+  padding: 2px 4px;
+  margin: 0;
+}
+*/
+nav.pagination > span.page.current {
+  font-weight: bold;
+  /*text-decoration: underline;*/
 }
 
 footer > p {
@@ -56,6 +118,10 @@ footer > p {
   color: gray;
 }
 
-th {
-  text-align: left;
+p.notice {
+  color: green;
+}
+
+p.alert {
+  color: red;
 }

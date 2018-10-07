@@ -11,7 +11,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
         boolean :banned
       end
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

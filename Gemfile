@@ -38,6 +38,9 @@ gem 'slim-rails'
 # Paging
 gem 'kaminari'
 
+# Authentication and authorization
+gem 'devise'
+
 # Awesome print
 gem 'awesome_print'
 gem 'irbtools'
@@ -52,6 +55,8 @@ group :development, :test do
   # отладчик
   gem 'jquery-rails'
   gem 'xray-rails'
+  # отладка отправки почты
+  gem 'letter_opener'
 end
 
 group :development do

@@ -1,9 +1,9 @@
 tr
     td = link_to user.name, user
     td = user.email
-    td = user.moderator
-    td = user.creator
-    td = user.banned
+    td = t("label.#{user.moderator}")
+    td = t("label.#{user.creator}")
+    td = t("label.#{user.banned}")
     / td = link_to 'Show', user
-    td = link_to 'Edit', edit_user_path(user)
-    td = link_to 'Destroy', user, data: { confirm: 'Are you sure?' }, method: :delete
+    td = link_to t('label.edit'), edit_user_path(user)
+    td = link_to t('label.destroy'), user, data: { confirm: t('label.are_you_sure?') }, method: :delete

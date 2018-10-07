@@ -1,8 +1,7 @@
 doctype html
 html
   head
-    title
-      | SupportApp
+    title = t('label.blog')
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all'
@@ -10,6 +9,8 @@ html
   body
   	= render 'layouts/header'
   	hr
+    p.notice = notice
+    p.alert = alert
     = yield
     hr
     = render 'layouts/footer'
