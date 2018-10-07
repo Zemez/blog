@@ -26,9 +26,11 @@ print 'Добавляем пользователей'
 
 hash_users = (2*MAX_SEEDS).times.map do
   print '.'
+  email = FFaker::Internet.safe_email
   {
     name: FFaker::Internet.user_name[0..15],
-    email: FFaker::Internet.safe_email
+    email: email,
+    password: email
   }
 end
 

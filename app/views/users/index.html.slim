@@ -1,13 +1,13 @@
-h1 Users
+h1 = t('label.users')
 
 table
   thead
     tr
-      th Name
-      th Email
-      th Moderator
-      th Creator
-      th Banned
+      th = t('label.name')
+      th = t('label.Email')
+      th = t('label.moderator')
+      th = t('label.creator')
+      th = t('label.banned')
       / th
       th
       th
@@ -16,4 +16,4 @@ table
     = render partial: 'user', collection: @users
 br
 
-= link_to 'New User', new_user_path
+= link_to t('label.new_user'), new_user_path

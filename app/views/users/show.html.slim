@@ -1,33 +1,57 @@
-h2 User Info:
+h1 = t('label.user_info')
 
 table
   tr
     td
-      strong Name:
+      strong = t('label.name') + ':'
     td = @user.name
   tr
     td
-      strong Email:
+      strong = t('label.email') + ':'
     td  = @user.email
   tr
     td
-      strong Moderator:
-    td = @user.moderator
+      strong = t('label.moderator') + ':'
+    td = t("label.#{@user.moderator}")
   tr
     td
-      strong Creator:
-    td = @user.creator
+      strong = t('label.creator') + ':'
+    td = t("label.#{@user.creator}")
   tr
     td
-      strong Banned:
-    td = @user.banned
+      strong = t('label.banned') + ':'
+    td = t("label.#{@user.banned}")
   tr
     td
-      strong Role:
-    td = @user.role
+      strong = t('label.role') + ':'
+    td = t("label.#{@user.role.downcase}")
+  tr
+    td
+      strong = t('label.comments') + ':'
+    td = @user.comments_count
+  tr
+    td
+      strong = t('label.sign_in_count') + ':'
+    td =@user.sign_in_count
+  tr
+    td
+      strong = t('label.sign_in_at') + ':'
+    td = @user.current_sign_in_at
+  tr
+    td
+      strong = t('label.last_sign_in') + ':'
+    td = @user.last_sign_in_at
+  tr
+    td
+      strong = t('label.sign_in_ip') + ':'
+    td = @user.current_sign_in_ip
+  tr
+    td
+      strong = t('label.last_sign_in_ip') + ':'
+    td = @user.last_sign_in_ip
 
 p#notice = notice
 
-=> link_to 'Edit', edit_user_path(@user)
+=> link_to t('label.edit'), edit_user_path(@user)
 '|
-=< link_to 'Back', users_path
+=< link_to t('label.back'), users_path

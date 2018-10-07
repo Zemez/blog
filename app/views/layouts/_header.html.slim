@@ -1,10 +1,20 @@
+//
 header
 	nav
-		h4
-			= link_to 'Home', index_path
-		h4	
-			= link_to 'Posts', posts_path
-		h4
-			= link_to 'Users', users_path
-		h4
-			= link_to 'About', about_path
+		ul.nav_menu
+			li => link_to t('label.home'), index_path
+			'|
+			li =>< link_to t('label.posts'), posts_path
+			'|
+			li =>< link_to t('label.users'), users_path
+			'|
+			li =>< link_to t('label.about'), about_path
+		ul.nav_user
+			- if user_signed_in?
+				li => link_to t('label.hello') % current_user.name, current_user
+				'|
+				li =< link_to t('label.log_out'), destroy_user_session_path, method: :delete
+			- else
+				li => link_to t('label.log_in'), new_user_session_path
+				'|
+				li =< link_to t('label.registration'), new_user_registration_path
