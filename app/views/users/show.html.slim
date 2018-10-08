@@ -50,8 +50,10 @@ table
       strong = t('label.last_sign_in_ip') + ':'
     td = @user.last_sign_in_ip
 
-p#notice = notice
-
-=> link_to t('label.edit'), edit_user_path(@user)
+/ p#notice = notice
+- if current_user == @user and !current_user.banned or current_user.moderator
+  => link_to t('label.edit'), edit_user_path(@user)
+-else
+  span.inactive => t('label.edit')
 '|
 =< link_to t('label.back'), users_path

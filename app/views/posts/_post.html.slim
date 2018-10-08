@@ -13,9 +13,15 @@ tbody
     td.top = t("label.#{post.visible.to_s}")
   tr
     td
-    td
-       / = link_to 'Show', post
-       => link_to t('label.edit'), edit_post_path(post)
-       '|
-       =< link_to t('label.destroy'), post, method: :delete, data: { confirm: t('label.are_you_sure?') }
+    - if current_user == post.user and current_user.creator and !current_user.banned or current_user.moderator
+      td
+        => link_to t('label.edit'), edit_post_path(post)
+        '|
+        =< link_to t('label.destroy'), post, method: :delete, data: { confirm: t('label.are_you_sure?') }
+    - else
+      td.inactive
+        => t('label.edit')
+        '|
+        =< t('label.destroy')
+    / - end
     td

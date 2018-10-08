@@ -30,7 +30,7 @@ ru:
     about:        Инфо
     hello:        Привет, %s
     log_in:       Вход
-    log_out:      Выход
+    log_out:      Выйти
     sign_up:      Регистрация
     sign_in_with: Войти через 
     registration: Регистрация
@@ -48,7 +48,13 @@ ru:
     'false':      Нет
     'are_you_sure?': Вы уверенны?
     'forgot_your_password?': Забыли свой пароль?
-    send_me_reset_password_instructions: Отправить инструкцию сброса пароля
+    'send_me_reset_password_instructions': Отправить инструкцию сброса пароля
+    'user_was_successfully_created': Пользователь успешно создан
+    'user_was_successfully_updated': Пользователь успешно обновлен
+    'user_was_successfully_destroyed': Пользователь успешно удален
+    'post_was_successfully_created': Пост успешно создан
+    'post_was_successfully_updated': Пост успешно обновлен
+    'post_was_successfully_destroyed': Пост успешно удален
     "didn't_receive_confirmation_instructions?": Не получили инструкции для подтверждения?
     "didn't_receive_unlock_instructions?": Не получили инструкции для разблокировки?
 
@@ -68,3 +74,11 @@ ru:
             password_confirmation​: Подтверждение
             email: Email
             name: Имя пользователя
+
+  views:
+    pagination:
+      truncate: ...
+      last:     Конец
+      first:    Начало
+      previous: Назад
+      next:     Вперед

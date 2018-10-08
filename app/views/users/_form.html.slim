@@ -8,17 +8,17 @@
 
   .field
     = f.label t('label.name')
-    = f.text_field :name
+    = f.text_field :name, disabled: !(current_user == @user and !current_user.banned or current_user.moderator)
   .field
     = f.label t('label.email')
-    = f.text_field :email
+    = f.text_field :email, disabled: !(current_user == @user and !current_user.banned or current_user.moderator)
   .field
     = f.label t('label.moderator')
-    = f.check_box :moderator
+    = f.check_box :moderator, disabled: !current_user.moderator
   .field
     = f.label t('label.creator')
-    = f.check_box :creator
+    = f.check_box :creator, disabled: !current_user.moderator
   .field
     = f.label t('label.banned')
-    = f.check_box :banned
-  .actions = f.submit t('label.update_user')
+    = f.check_box :banned, disabled: !current_user.moderator
+  .actions = f.submit t('label.submit')

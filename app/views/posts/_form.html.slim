@@ -9,16 +9,16 @@
           li
             = message
   .field
-    = form.label t('label.title')
+    = form.label t('label.user') + ':'
+    = form.label @post_user.name
+  .field
+    = form.label t('label.title') + ':'
     = form.text_field :title
   .field
-    = form.label t('label.body')
+    = form.label t('label.body') + ':'
     = form.text_area :body
   .field
-    = form.label t('label.user')
-    = form.text_field :user_id
-  .field
-    = form.label t('label.visible')
-    = form.check_box :visible
+    = form.label t('label.visible') + ':'
+    = form.check_box :visible, disabled: !current_user.moderator
   .actions
-    = form.submit t('label.update_post')
+    = form.submit t('label.submit')
