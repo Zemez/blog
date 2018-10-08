@@ -46,15 +46,21 @@ ru:
     characters_minimum: символов минимум
     'true':       Да
     'false':      Нет
+  message:
     'are_you_sure?': Вы уверенны?
     'forgot_your_password?': Забыли свой пароль?
-    'send_me_reset_password_instructions': Отправить инструкцию сброса пароля
-    'user_was_successfully_created': Пользователь успешно создан
-    'user_was_successfully_updated': Пользователь успешно обновлен
-    'user_was_successfully_destroyed': Пользователь успешно удален
-    'post_was_successfully_created': Пост успешно создан
-    'post_was_successfully_updated': Пост успешно обновлен
-    'post_was_successfully_destroyed': Пост успешно удален
+    'you_are_not_authorized_to_create_posts': Вы не авторизованы создавать посты.
+    'you_are_not_authorized_to_edit_this_post': Вы не авторизованы редактировать этот пост.
+    'you_are_not_authorized_to_update_this_post': Вы не авторизованы обновлять этот пост.
+    'you_are_not_authorized_to_delete_this_post': Вы не авторизованы удалять этот пост.
+    'you_are_not_authorized_in_to_access_this_section': Вы не авторизованы для доступа к этому разделу.
+    'send_me_reset_password_instructions': Отправить инструкцию сброса пароля.
+    'user_was_successfully_created': Пользователь успешно создан.
+    'user_was_successfully_updated': Пользователь успешно обновлен.
+    'user_was_successfully_destroyed': Пользователь успешно удален.
+    'post_was_successfully_created': Пост успешно создан.
+    'post_was_successfully_updated': Пост успешно обновлен.
+    'post_was_successfully_destroyed': Пост успешно удален.
     "didn't_receive_confirmation_instructions?": Не получили инструкции для подтверждения?
     "didn't_receive_unlock_instructions?": Не получили инструкции для разблокировки?
 

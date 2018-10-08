@@ -11,6 +11,7 @@
   .field
     = form.label t('label.user') + ':'
     = form.label @post_user.name
+    = form.text_field :user_id, { readonly: true, style: 'display:none' }
   .field
     = form.label t('label.title') + ':'
     = form.text_field :title
