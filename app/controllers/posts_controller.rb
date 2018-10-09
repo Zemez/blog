@@ -23,21 +23,12 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    # @post = Post.find(params[:id])
     @post_user = @post.user
-    # respond_to do |format|
-    #   if !(@post.user == current_user and current_user.creator or current_user.moderator)
-    #     format.html { redirect_to :post, alert: t('message.you_are_not_authorized_to_edit_this_post.') }
-    #   end
-    # end
   end
 
   # POST /posts
   # POST /posts.json
   def create
-    # @post_params = post_params
-    # @post_params[:user_id] = current_user.id
-    # @post_params[:visible] &&= current_user.moderator 
     @post = Post.new(force_params)
     respond_to do |format|
       if @post.user == current_user and current_user.creator or current_user.moderator 
@@ -97,6 +88,7 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :body, :user_id, :visible)
     end
 
+    # Some force authorizations
     def force_params
       ps = {}
       if current_user.moderator
@@ -111,7 +103,7 @@ class PostsController < ApplicationController
 
     # Authorization filter
     def require_authorized
-      unless ((@post.blank? or @post.user == current_user) and current_user.creator) or current_user.moderator
+      unless (@post.blank? or @post.user == current_user) and current_user.creator and !current_user.banned or current_user.moderator
         redirect_to :posts, alert: t('message.you_are_not_authorized_in_to_access_this_section')
       end
     end
