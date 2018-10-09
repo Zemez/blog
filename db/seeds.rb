@@ -54,6 +54,7 @@ hash_posts = (3*MAX_SEEDS).times.map do
     title: FFaker::Lorem.sentence,
     body: FFaker::Lorem.paragraphs.to_s.gsub(/["\[\]]/,'').gsub('.,', '.'),
     user: creators.sample
+    visible: (rand(2) == 1) ? true : false
   }
 end
 
@@ -66,7 +67,7 @@ print 'Добавляем комментарии'
 
 hash_comments = (50*MAX_SEEDS).times.map do
   print '.'
-  commentable =((rand(2) == 1) ? posts : users).sample
+  commentable = ((rand(2) == 1) ? posts : users).sample
   {
     body: FFaker::Lorem.paragraph,
     user: users.sample,

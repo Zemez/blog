@@ -2,6 +2,8 @@ h1 = t('label.posts')
 
 table = render partial: 'post', collection: @posts
 br
-
-= link_to t('label.new_post'), new_post_path
+- if current_user.creator and !current_user.banned or current_user.moderator
+	= link_to t('label.new_post'), new_post_path
+- else
+	span.inactive = t('label.new_post')
 = paginate @posts

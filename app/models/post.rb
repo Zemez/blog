@@ -1,10 +1,10 @@
 class Post < ApplicationRecord
   belongs_to :user
 
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
   has_many :commenters, through: :comments, source: :user
 
-  has_many :marks
+  has_many :marks, dependent: :destroy
   has_many :markers, through: :marks, source: :user
 
   has_one :seo, as: :seoable
