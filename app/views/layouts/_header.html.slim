@@ -11,7 +11,7 @@ header
 			li =>< link_to t('label.about'), about_path
 		ul.nav_user
 			- if user_signed_in?
-				li => link_to t('label.hello') % current_user.name, current_user
+				li => link_to t('label.hello') % current_user.name.gsub(/\W+|\s+|\d+/,' ').strip.titlecase, current_user
 				'|
 				li =< link_to t('label.log_out'), destroy_user_session_path, method: :delete
 			- else
