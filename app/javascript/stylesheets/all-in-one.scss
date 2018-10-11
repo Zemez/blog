@@ -1,0 +1,111 @@
+/* all-in-one.scss */
+.top {
+  vertical-align: top;
+}
+
+.inactive {
+  color: grey;
+  font-style: italic;
+}
+a,
+.button {
+  display: inline-block;
+  padding: 2px 4px;
+  color: darkcyan;
+  text-decoration: none;
+  border: 1px solid #FFF;
+  border-radius: 3px;
+}
+
+a:visited,
+.button:visited {
+  color: darkcyan;
+  text-decoration: none;
+}
+
+a:hover,
+.button:hover {
+  color: white;
+  background: seagreen;
+  border: 1px solid darkcyan;
+  text-decoration: none;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 1px 2px;
+}
+
+th > a:first-child,
+td > a:first-child,
+th > .button:first-child,
+td > .button:first-child {
+  margin-left: -6px;
+}
+
+nav {
+  width: 100%;
+  overflow: hidden;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.nav_menu {
+  float: left;
+}
+
+ul.nav_user {
+  float: right;
+}
+
+li {
+  display: inline-block;
+}
+
+nav.pagination > span.page {
+  vertical-align: middle;
+}
+
+nav.pagination > span.page.current {
+  font-weight: bold;
+  padding: 3px 5px;
+}
+
+footer > p {
+  margin: 0;
+  font-size: 0.8em;
+  color: gray;
+}
+
+p.notice {
+  color: green;
+}
+
+p.alert {
+  color: red;
+  margin: 0;
+  padding: 0;
+}
+
+#post_title,
+#post_body {
+  min-width: 20em;
+  width: 100%;
+}
+
+#post_body {
+  height: 15em;
+}
+
+#user_name,
+#user_email,
+#user_password,
+#user_password_confirmation, {
+  min-width: 20em;
+  width: 25%;
+}

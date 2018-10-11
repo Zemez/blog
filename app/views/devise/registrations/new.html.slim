@@ -3,21 +3,18 @@ h2 = t('label.sign_up')
   = devise_error_messages!
   .field
     = f.label t('label.name')
-    br
     = f.text_field :name, autofocus: true
   .field
     = f.label t('label.email')
-    br
     = f.email_field :email, autocomplete: "email"
   .field
     = f.label t('label.password')
     - if @minimum_password_length
-      em = "(#{@minimum_password_length} #{t('label.characters_minimum')})"
-    br
+      em = '(' + t('message.characters_minimum') % @minimum_password_length + ')'
+      br
     = f.password_field :password, autocomplete: "new-password"
   .field
     = f.label t('label.password_confirmation')
-    br
     = f.password_field :password_confirmation, autocomplete: "new-password"
   .actions
     = f.submit t('label.sign_up')
