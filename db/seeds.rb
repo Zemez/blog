@@ -53,7 +53,7 @@ hash_posts = (3*MAX_SEEDS).times.map do
   {
     title: FFaker::Lorem.sentence,
     body: FFaker::Lorem.paragraphs.to_s.gsub(/["\[\]]/,'').gsub('.,', '.'),
-    user: creators.sample
+    user: creators.sample,
     visible: (rand(2) == 1) ? true : false
   }
 end

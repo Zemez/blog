@@ -43,18 +43,18 @@ ru:
     show:         Показать
     back:         Вернуться
     submit:       Принять
-    characters_minimum: символов минимум
     'true':       Да
     'false':      Нет
   message:
-    'are_you_sure?': Вы уверенны?
+    'characters_minimum': минимум %d символов
+    'are_you_sure?': Вы уверены?
     'forgot_your_password?': Забыли свой пароль?
     'you_are_not_authorized_to_create_posts': Вы не авторизованы создавать посты.
     'you_are_not_authorized_to_edit_this_post': Вы не авторизованы редактировать этот пост.
     'you_are_not_authorized_to_update_this_post': Вы не авторизованы обновлять этот пост.
     'you_are_not_authorized_to_delete_this_post': Вы не авторизованы удалять этот пост.
     'you_are_not_authorized_in_to_access_this_section': Вы не авторизованы для доступа к этому разделу.
-    'send_me_reset_password_instructions': Отправить инструкцию сброса пароля.
+    'send_me_reset_password_instructions': Отправить инструкцию сброса пароля
     'user_was_successfully_created': Пользователь успешно создан.
     'user_was_successfully_updated': Пользователь успешно обновлен.
     'user_was_successfully_destroyed': Пользователь успешно удален.
