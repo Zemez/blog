@@ -5,6 +5,10 @@ h2 = t('message.forgot_your_password?')
     = f.label t('label.email')
     br
     = f.email_field :email, autofocus: true, autocomplete: "email"
+    br
+    br
   .actions
     = f.submit t('message.send_me_reset_password_instructions')
+    br
+    br
 = render "devise/shared/links"

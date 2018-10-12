@@ -43,7 +43,7 @@ gem 'devise'
 
 # Awesome print
 gem 'awesome_print'
-gem 'irbtools'
+# gem 'irbtools'
 # gem 'table_print'
 
 group :development, :test do

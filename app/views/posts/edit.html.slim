@@ -2,6 +2,6 @@ h1 = t('label.editing_post')
 
 == render 'form', post: @post
 
-=> link_to t('label.show'), @post
-'| 
-=< link_to t('label.back'), :back
+=> link_to t('label.show'), @post, class: 'link'
+.delima
+=< link_to t('label.back'), :back, class: 'link'

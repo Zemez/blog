@@ -4,14 +4,16 @@
 // that code so it'll be compiled.
 
 /* application,js */
-import Rails from 'rails-ujs';
-import Turbolinks from 'turbolinks';
+// import Rails from 'rails-ujs'
+// import Turbolinks from 'turbolinks'
+// Rails.start()
+// Turbolinks.start()
 
-import 'bootstrap';
+import 'jquery'
+import 'jquery-ujs'
+import 'rails-ujs'
+import 'bootstrap/dist/css/bootstrap'
+import 'bootstrap/dist/js/bootstrap'
 
 import 'stylesheets'
 import 'javascripts'
-
-Rails.start();
-Turbolinks.start();
-

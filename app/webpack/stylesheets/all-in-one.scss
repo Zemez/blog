@@ -3,28 +3,55 @@
   vertical-align: top;
 }
 
+.delim {
+  display: inline-block;
+  width: 1px;
+  line-height: 1.5rem;
+  height: 0.5rem;
+  margin: 0.75rem 0.5rem;
+  background: darkcyan;
+}
+
+.delima {
+  display: inline-block;
+  width: 1px;
+  line-height: 1.5rem;
+  height: 0.5rem;
+  margin: 0 0.5rem;
+  background: darkcyan;
+}
+
+input[type='checkbox'] {
+  margin-right: 0.5rem;
+}
+
 .inactive {
   color: grey;
   font-style: italic;
 }
-a,
-.button {
+
+.navbar-toggler {
+  color: darkcyan;
+}
+
+.pagination a,
+.link {
   display: inline-block;
   padding: 2px 4px;
   color: darkcyan;
   text-decoration: none;
-  border: 1px solid #FFF;
+  border: 1px solid transparent;
   border-radius: 3px;
 }
 
-a:visited,
-.button:visited {
+.pagination a:visited,
+.link:visited {
   color: darkcyan;
   text-decoration: none;
 }
 
-a:hover,
-.button:hover {
+.pagination a:hover,
+.link:hover {
   color: white;
   background: seagreen;
   border: 1px solid darkcyan;
@@ -44,28 +71,29 @@ td > .button:first-child {
   margin-left: -6px;
 }
 
-nav {
-  width: 100%;
-  overflow: hidden;
-}
+// nav {
+//   width: 100%;
+//   overflow: hidden;
+// }
 
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
+// nav ul {
+//   list-style: none;
+//   display: inline-block;
+//   margin: 0;
+//   padding: 0;
+// }
 
-ul.nav_menu {
+ul.nav-menu {
   float: left;
 }
 
-ul.nav_user {
+ul.nav-user {
   float: right;
 }
 
-li {
-  display: inline-block;
-}
+// li {
+//   display: inline-block;
+// }
 
 nav.pagination > span.page {
   vertical-align: middle;
@@ -78,18 +106,25 @@ nav.pagination > span.page.current {
 
 footer > p {
   margin: 0;
+  margin-top: -0.5em;
+  margin-bottom: 0.5em;
   font-size: 0.8em;
   color: gray;
 }
 
 p.notice {
   color: green;
+  margin: 0;
+  padding: 0;
+  line-height: 2;
 }
 
-p.alert {
+p.alert,
+#error_explanation {
   color: red;
   margin: 0;
   padding: 0;
+  line-height: 2;
 }
 
 #post_title,

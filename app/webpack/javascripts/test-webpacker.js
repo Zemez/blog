@@ -1,2 +1,5 @@
 /* test-webpacker.js */
-console.log('Hello World from Webpacker')
+$(function() {
+	console.log('Page loaded.');
+	console.log('Hello World from Webpacker.');
+});

@@ -1,26 +1,23 @@
 h1 = t('label.post')
 
 table = render @post
-
-/ p#notice = notice
-
+br
 h2 = t('label.comments') + ':'
-
 table
   / - @post.comments.order(:created_at).page(params[:page]).per(5).each do |comment|
   - @comments.each do |comment|
     tr
       td.top
-        = link_to comment.user.name, comment.user
+        = link_to comment.user.name, comment.user, class: 'link'
       td = comment.body
-
+br
 - if current_user == @post.user and current_user.creator and !current_user.banned or current_user.moderator
-	=> link_to t('label.edit'), edit_post_path(@post)
+	=> link_to t('label.edit'), edit_post_path(@post), class: 'link'
 - else
 	span.inactive
 		=> t('label.edit')
 / - end
-'| 
-=< link_to t('label.back'), posts_path
+.delima
+=< link_to t('label.back'), posts_path, class: 'link'
 
 = paginate @comments

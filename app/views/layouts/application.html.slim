@@ -6,9 +6,9 @@ html
     = csp_meta_tag
     = stylesheet_pack_tag 'application', media: 'all'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  body
+  body.container-fluid
   	= render 'layouts/header'
-  	hr
+  	/ hr
     p.notice = notice
     p.alert = alert
     = yield
