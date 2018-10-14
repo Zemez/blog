@@ -1,3 +1,3 @@
 /* index.js */
-import './xray'
+// import './xray'
 import './catch_ajax'
