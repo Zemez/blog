@@ -26,9 +26,9 @@ $(function() {
     }
     var action = event.target.action;
     if (data.redirect && action) {
-      // setTimeout(function() { 
-      //   $(location).attr('href', action);
-      // }, 1000);
+      setTimeout(function() { 
+        $(location).attr('href', action);
+      }, 1000);
     }
   });
 });
