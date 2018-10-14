@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.json { render json: { status: 'updated', redirect: true, message: t('message.user_was_successfully_updateed.') } }
+        format.json { render json: { status: 'updated', redirect: true, message: t('message.user_was_successfully_updated.') } }
         format.html { redirect_to @user, notice: t('message.user_was_successfully_updated.') }
         # format.json { render :show, status: :ok, location: @user }
       else
