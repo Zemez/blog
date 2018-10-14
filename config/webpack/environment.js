@@ -15,10 +15,10 @@ environment.plugins.append('Provide', new webpack.ProvidePlugin({
 module.exports = environment
 
 /* To use jQuery in views */
-environment.loaders.append('expose', {
-  test: require.resolve('jquery'),
-  use: [{
-    loader: 'expose-loader',
-    options: '$'
-  }]
-})
+// environment.loaders.append('expose', {
+//   test: require.resolve('jquery'),
+//   use: [{
+//     loader: 'expose-loader',
+//     options: '$'
+//   }]
+// })

@@ -63,24 +63,22 @@ ru:
     'post_was_successfully_destroyed': Пост успешно удален.
     "didn't_receive_confirmation_instructions?": Не получили инструкции для подтверждения?
     "didn't_receive_unlock_instructions?": Не получили инструкции для разблокировки?
-
   activerecord:
     errors:
       messages:
         blank: обязательно для заполнения
         too_short: слишком коротко
-
-        models:
-          user: Пользователи
-          post: Сообщения
-
-        attributes:
-          user:
-            password: Пароль
-            password_confirmation​: Подтверждение
-            email: Email
-            name: Имя пользователя
-
+      models:
+        user:
+          attributes:
+            name:
+              too_long: слишком длинно
+      attributes:
+        user:
+          password: Пароль
+          password_confirmation​: Подтверждение
+          email: Email
+          name: Имя пользователя
   views:
     pagination:
       truncate: ...
