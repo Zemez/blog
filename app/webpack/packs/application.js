@@ -11,7 +11,8 @@
 
 import 'jquery'
 import 'jquery-ujs'
-import 'rails-ujs'
+// import Rails from 'rails-ujs'
+// Rails.start()
 import 'bootstrap/dist/css/bootstrap'
 import 'bootstrap/dist/js/bootstrap'
 

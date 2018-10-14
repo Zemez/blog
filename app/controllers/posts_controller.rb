@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  respond_to :html, :json, :xml
   before_action :authenticate_user!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :require_authorized, only: [:create, :new, :edit, :update, :destroy]
@@ -30,14 +31,17 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(force_params)
+    @post_user = current_user
     respond_to do |format|
       if @post.user == current_user and current_user.creator or current_user.moderator 
         if @post.save
+          # format.json { render :show, status: :created, location: @post }
+          format.json { render json: { status: 'created', redirect: true, message: t('message.post_was_successfully_created.') } }
           format.html { redirect_to @post, notice: t('message.post_was_successfully_created.') }
-          format.json { render :show, status: :created, location: @post }
         else
+          # format.json { render json: @post.errors, status: :unprocessable_entity }
+          format.json { render json: { status: :unprocessable_entity, message: @post.errors } }
           format.html { render :new }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
         end
       else
         format.html { redirect_to :posts, alert: t('message.you_are_not_authorized_to_create_posts.') }
@@ -51,11 +55,11 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.user == current_user and current_user.creator or current_user.moderator 
         if @post.update(force_params)
-          format.html { redirect_to @post, notice: t('message.post_was_successfully_updated.') }
-          format.json { render :show, status: :ok, location: @post }
+            format.json { render json: { status: 'updated', redirect: true, message: t('message.post_was_successfully_updated.') } }
+            format.html { redirect_to @post, notice: t('message.post_was_successfully_updated.') }
         else
-          format.html { render :edit }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
+            format.json { render json: { status: :unprocessable_entity, message: @post.errors } }
+            format.html { render :edit }
         end
       else
         format.html { redirect_to :post, alert: t('message.you_are_not_authorized_to_update_this_post.') }
@@ -81,6 +85,7 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+      @post_user = @post.user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

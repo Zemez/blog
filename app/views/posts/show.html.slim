@@ -1,16 +1,15 @@
 h1 = t('label.post')
 
-table = render @post
-br
+table.table = render @post
 h2 = t('label.comments') + ':'
-table
+table.table
   / - @post.comments.order(:created_at).page(params[:page]).per(5).each do |comment|
   - @comments.each do |comment|
     tr
       td.top
         = link_to comment.user.name, comment.user, class: 'link'
       td = comment.body
-br
+
 - if current_user == @post.user and current_user.creator and !current_user.banned or current_user.moderator
 	=> link_to t('label.edit'), edit_post_path(@post), class: 'link'
 - else

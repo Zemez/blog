@@ -22,6 +22,9 @@ module Blog
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
+    # Logger
+    config.logger = Logger.new(STDOUT)
+
     # Locales
     config.i18n.available_locales = [:en, :ru]
     config.i18n.default_locale = :ru
