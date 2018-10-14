@@ -29,11 +29,13 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        format.json { render json: { status: 'created', redirect: true, message: t('message.user_was_successfully_created.') } }
         format.html { redirect_to @user, notice: t('message.user_was_successfully_created.') }
-        format.json { render :show, status: :created, location: @user }
+        # format.json { render :show, status: :created, location: @user }
       else
+        format.json { render json: { status: :unprocessable_entity, message: @user.errors } }
         format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        # format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,11 +45,13 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        format.json { render json: { status: 'updated', redirect: true, message: t('message.user_was_successfully_updateed.') } }
         format.html { redirect_to @user, notice: t('message.user_was_successfully_updated.') }
-        format.json { render :show, status: :ok, location: @user }
+        # format.json { render :show, status: :ok, location: @user }
       else
+        format.json { render json: { status: :unprocessable_entity, message: @user.errors } }
         format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        # format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end

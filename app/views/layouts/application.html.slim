@@ -4,11 +4,11 @@ html
     title = t('label.blog')
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
-  body
+    = stylesheet_pack_tag 'application', media: 'all'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  body.container-fluid
   	= render 'layouts/header'
-  	hr
+  	/ hr
     p.notice = notice
     p.alert = alert
     = yield

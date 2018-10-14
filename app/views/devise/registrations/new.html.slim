@@ -1,24 +1,25 @@
 h2 = t('label.sign_up')
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = devise_error_messages!
-  .field
-    = f.label t('label.name')
+  .field.form-group
+    = f.label :name, t('label.name')
     br
-    = f.text_field :name, autofocus: true
-  .field
-    = f.label t('label.email')
+    = f.text_field :name, { autofocus: true, class: 'form-control' }
+  .field.form-group
+    = f.label :email, t('label.email')
     br
-    = f.email_field :email, autocomplete: "email"
-  .field
-    = f.label t('label.password')
+    = f.email_field :email, { autocomplete: "email", class: 'form-control' }
+  .field.form-group
+    = f.label :password, t('label.password')
     - if @minimum_password_length
-      em = "(#{@minimum_password_length} #{t('label.characters_minimum')})"
-    br
-    = f.password_field :password, autocomplete: "new-password"
-  .field
+      em = ' (' + t('message.characters_minimum') % @minimum_password_length + ')'
+      br
+    = f.password_field :password, { autocomplete: "new-password", class: 'form-control' }
+  .field.form-group
     = f.label t('label.password_confirmation')
     br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit t('label.sign_up')
+    = f.password_field :password_confirmation, { autocomplete: "new-password", class: 'form-control' }
+  br
+  .actions.form-group
+    = f.submit t('label.sign_up'), class: 'btn btn-primary btn-outline-success'
 = render "devise/shared/links"

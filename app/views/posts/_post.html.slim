@@ -1,7 +1,7 @@
 thead
   tr
-    th = link_to post.user.name, post.user
-    th = link_to post.title, post
+    th = link_to post.user.name, post.user, class: 'link'
+    th = link_to post.title, post, class: 'link'
     th = t('label.visible')
 tbody
   tr
@@ -9,19 +9,17 @@ tbody
       = post.user.email
       br
       = t("label.#{post.user.role.downcase}")
-    td = post.body
+    td
+      = post.body
+      br
+      br
+      - if current_user == post.user and current_user.creator and !current_user.banned or current_user.moderator
+        => link_to t('label.edit'), edit_post_path(post), class: 'link'
+        .delima
+        =< link_to t('label.destroy'), post, method: :delete, data: { confirm: t('message.are_you_sure?') }, class: 'link'
+      - else
+        span.inactive => t('label.edit')
+        .delima
+        span.inactive =< t('label.destroy')
+
     td.top = t("label.#{post.visible.to_s}")
-  tr
-    td
-    - if current_user == post.user and current_user.creator and !current_user.banned or current_user.moderator
-      td
-        => link_to t('label.edit'), edit_post_path(post)
-        '|
-        =< link_to t('label.destroy'), post, method: :delete, data: { confirm: t('message.are_you_sure?') }
-    - else
-      td.inactive
-        => t('label.edit')
-        '|
-        =< t('label.destroy')
-    / - end
-    td

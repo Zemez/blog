@@ -1,0 +1,12 @@
+/* header.cscc */
+header nav ul {
+  display: block;
+}
+
+header nav:first-child {
+  float: left;
+}
+
+header nav:last-child {
+  float: right;
+}

@@ -1,10 +1,14 @@
-h2 = t('label.forgot_your_password?')
+h2 = t('message.forgot_your_password?')
 = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
   = devise_error_messages!
   .field
     = f.label t('label.email')
     br
     = f.email_field :email, autofocus: true, autocomplete: "email"
+    br
+    br
   .actions
-    = f.submit t('label.send_me_reset_password_instructions')
+    = f.submit t('message.send_me_reset_password_instructions')
+    br
+    br
 = render "devise/shared/links"

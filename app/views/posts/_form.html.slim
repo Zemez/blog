@@ -1,4 +1,4 @@
-= form_with(model: post, local: true) do |form|
+= form_with(model: post) do |form|
   - if post.errors.any?
     #error_explanation
       h2
@@ -8,18 +8,23 @@
         - post.errors.full_messages.each do |message|
           li
             = message
-  .field
-    = form.label t('label.user') + ':'
-    = form.label @post_user.name
-    = form.text_field :user_id, { readonly: true, style: 'display:none' }
-  .field
-    = form.label t('label.title') + ':'
-    = form.text_field :title
-  .field
-    = form.label t('label.body') + ':'
-    = form.text_area :body
-  .field
-    = form.label t('label.visible') + ':'
-    = form.check_box :visible, disabled: !current_user.moderator
-  .actions
-    = form.submit t('label.submit')
+  .field.form-group
+    = form.label :user_id, t('label.user') + ':'
+    br
+    = form.label :user_id, { value: @post_user.name, class: 'form-control col-md-2' }
+    = form.text_field :user_id, { value: @post_user.id, readonly: true, class: 'form-control col-md-2' }
+  .field.form-group
+    = form.label :title, t('label.title') + ':'
+    br
+    = form.text_field :title, { class: 'form-control' }
+  .field.form-group
+    = form.label :body, t('label.body') + ':'
+    br
+    = form.text_area :body, { class: 'form-control' }
+  .field.form-group
+    = form.label :visible
+      = form.check_box :visible, disabled: !current_user.moderator
+      = t('label.visible')
+  .actions.form-group
+    = form.submit t('label.submit'), class: 'btn btn-primary btn-outline-success'
+ 

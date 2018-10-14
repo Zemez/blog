@@ -1,12 +1,12 @@
 tr
-	td = link_to user.name, user
+	td = link_to user.name, user, class: 'link'
 	td = user.email
 	td = t("label.#{user.moderator}")
 	td = t("label.#{user.creator}")
 	td = t("label.#{user.banned}")
 	- if current_user == user and !current_user.banned or current_user.moderator
-		td = link_to t('label.edit'), edit_user_path(user)
-		td = link_to t('label.destroy'), user, data: { confirm: t('label.are_you_sure?') }, method: :delete
+		td = link_to t('label.edit'), edit_user_path(user), class: 'link'
+		td = link_to t('label.destroy'), user, data: { confirm: t('message.are_you_sure?') }, method: :delete, class: 'link'
 	- else
 		td.inactive = t('label.edit')
 		td.inactive = t('label.destroy')

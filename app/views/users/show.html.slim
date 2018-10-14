@@ -1,6 +1,6 @@
 h1 = t('label.user_info')
 
-table
+table.table.table-condensed.col-md-6
   tr
     td
       strong = t('label.name') + ':'
@@ -49,11 +49,11 @@ table
     td
       strong = t('label.last_sign_in_ip') + ':'
     td = @user.last_sign_in_ip
-
+br
 / p#notice = notice
 - if current_user == @user and !current_user.banned or current_user.moderator
-  => link_to t('label.edit'), edit_user_path(@user)
+  => link_to t('label.edit'), edit_user_path(@user), class: 'link'
 -else
   span.inactive => t('label.edit')
-'|
-=< link_to t('label.back'), :back
+.delima
+=< link_to t('label.back'), :back, class: 'link'
