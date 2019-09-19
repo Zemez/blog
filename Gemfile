@@ -44,15 +44,23 @@ gem 'devise'
 # Awesome print
 gem 'awesome_print'
 
+# jQuery
+# gem 'jquery', '>= 3'
+gem 'jquery-rails'
+
+# генератор случайных названий/текстов
+gem 'ffaker'
+
 group :development, :test do
   # генератор случайных названий/текстов
-  gem 'ffaker'
+  # gem 'ffaker'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
   # отладчик
-  gem 'jquery-rails'
-  gem 'xray-rails'
+  # gem 'jquery-rails'
+  # gem 'xray-rails'
+  # gem "xray", "~> 1.1"
   # отладка отправки почты
   gem 'letter_opener'
 end
